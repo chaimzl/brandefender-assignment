@@ -1,0 +1,24 @@
+{
+   "rates": [
+        {
+            "state":"open",
+            "currency":"ils",
+            "value":124802 
+        },
+        {
+            "state":"high",
+            "currency":"ils",
+            "value":125221 
+        },
+        {
+            "state":"low",
+            "currency":"ils",
+            "value":123472 
+        },
+        {
+            "state":"close",
+            "currency":"ils",
+            "value":124432 
+        }
+    ]
+}
