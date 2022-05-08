@@ -4,7 +4,7 @@ export default {
 
   getDaelyRates: (day:Date): Promise<{ rates: DcRate[] }> => {
     let dayParam= day.toISOString().split('T')[0];
-    return fetch(`http://brandefenderassignmentapi-env.eba-4qn32pkk.us-east-1.elasticbeanstalk.com/api/getDayRates/${dayParam}`)
+    return fetch(`http://brandefenderassignmentapi.us-east-1.elasticbeanstalk.com/api/getDayRates/${dayParam}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText)
