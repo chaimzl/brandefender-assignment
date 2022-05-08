@@ -85,7 +85,7 @@ export default () => {
             </div>
             <div className='row pt-3'>
                 <div className='col-12'>
-                    <div className='w-100 p-2 rounded gray-bg mb-2'>fwefwf</div>
+                    <div className='w-100 p-2 rounded gray-bg mb-2 f-14'>Records for the {selectedDay.toDateString()}</div>
                     {fetchedRates.length > 0 && <MarketChart rates={fetchedRates} />}
                     <Skeleton width="100%" height="150"></Skeleton>
                 </div>
