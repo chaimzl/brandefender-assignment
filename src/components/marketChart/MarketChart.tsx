@@ -2,29 +2,36 @@ import React, { useState } from 'react';
 import { Chart } from 'primereact/chart';
 import './marketChart.scss';
 import { DcRate } from './marketChart.types';
+import { useEffect } from 'react';
 
-const LineChartDemo = (props:{rates:DcRate[]}) => {
-   
+const LineChartDemo = (props: { rates: DcRate[] }) => {
 
-    const [lineStylesData] = useState({
-        labels: props?.rates.map(x=> x.state),
+    const data={
+        labels: props?.rates.map(x => x.state),
         datasets: [
             {
                 label: '',
-                data: props.rates.map(x=> x.value),
+                data: props.rates.map(x => x.value),
                 fill: true,
                 borderColor: '#1976d2',
                 tension: .4,
                 backgroundColor: '#1976d21a'
             }
         ]
-    });
+    }
+
+    useEffect(() => {
+        data.labels= props?.rates.map(x => x.state);
+        data.datasets[0].data=props.rates.map(x => x.value);
+        setLineStylesData(data);
+    }, [props.rates]);
+    const [lineStylesData,setLineStylesData] = useState(data);
 
     const getLightTheme = () => {
         let basicOptions = {
             maintainAspectRatio: false,
             aspectRatio: .6,
-            
+
             plugins: {
                 legend: {
                     labels: {
