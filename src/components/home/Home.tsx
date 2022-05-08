@@ -78,7 +78,7 @@ export default () => {
                     </LocalizationProvider>
 
                 </div>
-                <div className='col-1 align-self-center text-end'>
+                <div className='col-2 align-self-center text-end'>
                     <Checkbox checked={isFaborit} onChange={handleClick} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                 </div>
 
