@@ -28,7 +28,6 @@ app.get('/api/getDayRates/:day', (req1, res1) => {
 
     res.on("end", function () {
       var jsonData = JSON.parse(str);
-      res1.send(jsonData);
       var dayData = jsonData["Time Series (Digital Currency Daily)"][req1.params.day];
       if (dayData == null) {
         res1.send({ rates: [] });
