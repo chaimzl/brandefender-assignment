@@ -7,7 +7,7 @@ import SearchBox from './searchBox/SearchBox';
 
 export default () => {
 
-    return <header className="bras-header d-flex justify-content-between align-items-center px-4 py-2">
+    return <header className="bras-header d-flex justify-content-between align-items-center ps-1 pe-4 ">
         <LogoArea/>
         <NavBar/>
         <SearchBox/>

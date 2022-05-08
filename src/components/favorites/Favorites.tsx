@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default()=>
 {
@@ -12,7 +13,9 @@ export default()=>
     
     return (
         <div>
-          {favorites && favorites?.map((d:any) =>d && <li key={d}>{d}</li>)}
+          {favorites && favorites?.map((d:any) =>d && <li key={d}>
+            <Link key={d} to={`/?day=${d}`} >{d}</Link>
+            </li>)}
         </div>
     )
 }

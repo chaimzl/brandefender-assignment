@@ -1,3 +1,6 @@
-.MuiOutlinedInput-root{
-    height: 40px !important;
+
+@import './../../scss/variables.scss';
+
+.gray-bg{
+background: $gray-bg;
 }

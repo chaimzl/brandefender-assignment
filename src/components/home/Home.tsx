@@ -12,6 +12,8 @@ import Favorite from '@mui/icons-material/Favorite';
 import { favoritesSlice } from '../../slices/favorites.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton } from 'primereact/skeleton';
+import { useParams } from "react-router-dom";
+import './home.scss';
 
 
 export default () => {
@@ -22,6 +24,8 @@ export default () => {
     const favorites = useSelector((state: any) => {
         return state.favorites.data
     });
+   
+
 
     const handleChange = (newValue: Date | null) => {
         if (newValue) {
@@ -30,8 +34,18 @@ export default () => {
     };
 
     useEffect(() => {
+        let search = window.location.search;
+        let params = new URLSearchParams(search);
+        let dayParam = params.get('day');
+        if(dayParam){
+            let day=new Date(dayParam);
+            setSelectedDay(day);
+        }
+    }, [])
+
+    useEffect(() => {
         setfetchedRates([]);
-        homeService.getDaelyRates(selectedDay).then(data => setfetchedRates(data.rates.filter(x=> x.currency=='ILS')));
+        homeService.getDaelyRates(selectedDay).then(data => setfetchedRates(data.rates.filter(x => x.currency == 'ILS')));
         setIsFavorit(favorites?.indexOf(selectedDay.toDateString()) > -1)
     }, [selectedDay])
 
@@ -59,7 +73,7 @@ export default () => {
                             inputFormat="MM/dd/yyyy"
                             value={selectedDay}
                             onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
+                            renderInput={(params) => <TextField size="small" {...params} />}
                         />
                     </LocalizationProvider>
 
@@ -71,9 +85,9 @@ export default () => {
             </div>
             <div className='row pt-3'>
                 <div className='col-12'>
-
-                    {fetchedRates.length && <MarketChart rates={fetchedRates} />}
-                    <Skeleton width="100%" height="150px"></Skeleton>
+                    <div className='w-100 p-2 rounded gray-bg mb-2'>fwefwf</div>
+                    {fetchedRates.length > 0 && <MarketChart rates={fetchedRates} />}
+                    <Skeleton width="100%" height="150"></Skeleton>
                 </div>
             </div>
 

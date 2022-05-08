@@ -19,13 +19,7 @@ const LineChartDemo = (props: { rates: DcRate[] }) => {
             }
         ]
     }
-
-    useEffect(() => {
-        data.labels= props?.rates.map(x => x.state);
-        data.datasets[0].data=props.rates.map(x => x.value);
-        setLineStylesData(data);
-    }, [props.rates]);
-    const [lineStylesData,setLineStylesData] = useState(data);
+    const [lineStylesData] = useState(data);
 
     const getLightTheme = () => {
         let basicOptions = {
